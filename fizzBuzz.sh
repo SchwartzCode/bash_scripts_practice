@@ -1,8 +1,8 @@
 for i in {1..100}
 do
 
-  remainder5=$(( $i % 5 ))
-  remainder3=$(( $i % 3 ))
+  remainder5=$(( i % 5 ))
+  remainder3=$(( i % 3 ))
 
 #how to do a block comment:
   : <<'END'
