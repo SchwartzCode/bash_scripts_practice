@@ -1,7 +1,5 @@
 #!/bin/bash
 
-#echo $1 $2 $3
-#NAMES=("peter" "piper" "frank")
 
 args=("$@")
 
