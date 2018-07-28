@@ -17,7 +17,7 @@ echo $middle_row $mid_col_start
 tput clear
 
 tput cup $middle_row $mid_col_start
-tput bold
+#tput bold
 echo $@
 tput sgr0
 tput cup $( tput lines) 0

@@ -6,7 +6,6 @@ sqrt_args=$(echo "sqrt ( $args )" | bc -l)
 int_sqrt_args=$(echo $sqrt_args | awk '{print int($1)}')
 root=$(( $int_sqrt_args + 1 ))
 
-echo $root
 
  
 
