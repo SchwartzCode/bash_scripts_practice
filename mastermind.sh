@@ -19,7 +19,6 @@ check_guess () {
   for ((i=0;i<ANSWER_LENGTH; i++)); do
     guess_val=${guess:${i-1}:1}
     answer_val=${answer:${i-1}:1}
-    #printf "GUESS_VAL: $guess_val \t ANSWER_VAL: $answer_val \n"
     
     if [ "$guess_val" == "$answer_val" ]
     then
