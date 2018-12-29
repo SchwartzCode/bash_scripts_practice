@@ -30,6 +30,7 @@ while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
       printf "1"
     else
       printf "B "
+	#printf "NEW_LINE[$i]"
     fi
 
   done
