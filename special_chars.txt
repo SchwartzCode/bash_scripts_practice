@@ -1,0 +1,9 @@
+//the keyboard for one of my raspberry pis is messed up and missing some symbols
+//and was having some trouble ssh-ing into it with my windows laptop
+//so I figured I'd just put them in a text file and download it over git
+
+|
+
+/
+
+\
