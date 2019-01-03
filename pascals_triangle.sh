@@ -23,21 +23,24 @@ while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
 
     if [ $i -eq 0 ] ; then
       NEW_LINE[0]=1
-      printf "1 "
-
+      printf "${NEW_LINE[$i]} "
     elif [ $i -eq $(( $CURR_LINE - 1 )) ]; then
       NEW_LINE[$i]=1
-      printf "1"
+      printf "${NEW_LINE[$i]}"
     else
-      printf "B "
-	#printf "NEW_LINE[$i]"
+      i_m=$(( $i - 1 ))
+      NEW_LINE[$i]=$((CURR_OUTPUT[$i]+CURR_OUTPUT[$i_m]))
+      #printf "B "
+	printf "${NEW_LINE[$i]} "
     fi
+
+      #printf "${NEW_LINE[$i]}"
 
   done
 
 
-  CURR_OUTPUT=$NEW_LINE
-  ((CURR_LINE++))
+      CURR_OUTPUT=$NEW_LINE
+      ((CURR_LINE++))
 
 
 echo
