@@ -9,7 +9,7 @@ CURR_LINE=1
 
 tput clear
 while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
-
+  declare -a NEW_LINE	
   row_start=$(( $middle - $CURR_LINE ))
   tput cup $CURR_LINE $row_start
   tput bold
