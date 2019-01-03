@@ -15,10 +15,6 @@ while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
   tput bold
   tput sgr0
 
-
-#had trouble figuring out how to store values (arrays gave me trouble),
-# will revisit this at some point in the future
-
   for ((i=0; i<CURR_LINE;i++)); do
 
     if [ $i -eq 0 ] ; then
@@ -29,9 +25,14 @@ while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
       printf "${NEW_LINE[$i]}"
     else
       i_m=$(( $i - 1 ))
-      NEW_LINE[$i]=$((CURR_OUTPUT[$i]+CURR_OUTPUT[$i_m]))
-      #printf "B "
-	printf "${NEW_LINE[$i]} "
+      NEW_LINE[$i]=$((${CURR_OUTPUT[$i]}+${CURR_OUTPUT[$i_m]} ))
+	if [ ${NEW_LINE[$i]} -lt 10 ] ; then
+	  printf "${NEW_LINE[$i]}   "
+	elif [ ${NEW_LINE[$i]} -lt 100 ] ; then
+	  printf "${NEW_LINE[$i]}  "
+	else
+	  printf "${NEW_LINE[$i]} "
+	fi
     fi
 
       #printf "${NEW_LINE[$i]}"
@@ -39,7 +40,7 @@ while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
   done
 
 
-      CURR_OUTPUT=$NEW_LINE
+      CURR_OUTPUT=("${NEW_LINE[@]}")
       ((CURR_LINE++))
 
 
