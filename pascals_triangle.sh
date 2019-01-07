@@ -8,9 +8,9 @@ middle=$(( $cols / 2))
 CURR_LINE=1
 
 tput clear
-while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
+while [ $CURR_LINE -lt $(( $cols / 8 )) ] && [ $CURR_LINE -lt $rows ]; do
   declare -a NEW_LINE	
-  row_start=$(( $middle - $CURR_LINE ))
+  row_start=$(( $middle - $(($CURR_LINE * 4)) ))
   tput cup $CURR_LINE $row_start
   tput bold
   tput sgr0
@@ -19,24 +19,15 @@ while [ $CURR_LINE -lt $(( $cols / 2 )) ] && [ $CURR_LINE -lt $rows ]; do
 
     if [ $i -eq 0 ] ; then
       NEW_LINE[0]=1
-      printf "${NEW_LINE[$i]} "
+      printf "${NEW_LINE[$i]}       "
     elif [ $i -eq $(( $CURR_LINE - 1 )) ]; then
       NEW_LINE[$i]=1
       printf "${NEW_LINE[$i]}"
     else
       i_m=$(( $i - 1 ))
       NEW_LINE[$i]=$((${CURR_OUTPUT[$i]}+${CURR_OUTPUT[$i_m]} ))
-	if [ ${NEW_LINE[$i]} -lt 10 ] ; then
-	  printf "${NEW_LINE[$i]}   "
-	elif [ ${NEW_LINE[$i]} -lt 100 ] ; then
-	  printf "${NEW_LINE[$i]}  "
-	else
-	  printf "${NEW_LINE[$i]} "
-	fi
+      printf "${NEW_LINE[$i]}\t"
     fi
-
-      #printf "${NEW_LINE[$i]}"
-
   done
 
 
