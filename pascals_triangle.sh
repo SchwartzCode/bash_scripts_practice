@@ -1,5 +1,24 @@
 #!/bin/bash
 
+print_val () {
+	if [ $1 -gt 999999 ]; then
+	  printf "$1 "
+	elif [ $1 -gt 99999 ]; then
+	  printf "$1  "
+	elif [ $1 -gt 9999 ]; then
+	  printf "$1   "
+	elif [ $1 -gt 999 ]; then
+	  printf "$1    "
+	elif [ $1 -gt 99 ]; then
+	  printf "$1     "
+	elif [ $1 -gt 9 ]; then
+	  printf "$1      "
+	else
+	  printf "$1       "
+	fi
+}
+
+
 cols=$( tput cols )
 rows=$( tput lines )
 
@@ -19,14 +38,14 @@ while [ $CURR_LINE -lt $(( $cols / 8 )) ] && [ $CURR_LINE -lt $rows ]; do
 
     if [ $i -eq 0 ] ; then
       NEW_LINE[0]=1
-      printf "${NEW_LINE[$i]}       "
+      print_val "${NEW_LINE[$i]}"
     elif [ $i -eq $(( $CURR_LINE - 1 )) ]; then
       NEW_LINE[$i]=1
       printf "${NEW_LINE[$i]}"
     else
       i_m=$(( $i - 1 ))
       NEW_LINE[$i]=$((${CURR_OUTPUT[$i]}+${CURR_OUTPUT[$i_m]} ))
-      printf "${NEW_LINE[$i]}\t"
+      print_val "${NEW_LINE[$i]}"
     fi
   done
 
